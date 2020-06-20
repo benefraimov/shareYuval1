@@ -34,7 +34,7 @@ public class thirdActivity extends AppCompatActivity {
         //Connect the views to the xml.
         userName = findViewById(R.id.userName);
         userPass = findViewById(R.id.userPass);
-        database = FirebaseDatabase.getInstance();
+        database = FirebaseDatabase.getInstance();//change
         //myRef = database.getReference("message");
 
         findViewById(R.id.btnSignUpPage).setOnClickListener(new View.OnClickListener() {
