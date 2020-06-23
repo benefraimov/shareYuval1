@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_mercedes_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListView"></activity>
+        <activity android:name=".ViewShifts"></activity>
+        <activity android:name=".InsertShifts" />
+        <activity android:name=".ListView" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

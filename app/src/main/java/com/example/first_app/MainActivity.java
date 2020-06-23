@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            startActivity(new Intent(MainActivity.this, secondActivity.class));
+            startActivity(new Intent(MainActivity.this, InsertShifts.class));
         }
         else{
             //Do nothing
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
         if(user!=null){
-            startActivity(new Intent(MainActivity.this, secondActivity.class));
+            startActivity(new Intent(MainActivity.this, InsertShifts.class));
         }
         else{
             Toast.makeText(MainActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();

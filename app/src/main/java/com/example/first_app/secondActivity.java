@@ -14,6 +14,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
 
@@ -29,12 +34,36 @@ public class secondActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     FirebaseAuth mAuth;
     TextView hello;
-
+    //Reference for Users
+    DatabaseReference myRefUsers = FirebaseDatabase.getInstance().getReference("Users");
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        hello = findViewById(R.id.userNameWelcomePage);
+
+        // Read from the database
+        myRefUsers.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                User value = dataSnapshot.child(user.getUid()).getValue(User.class);
+                hello.setText("hello, " + value.getFullName());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
+
+
         userName = findViewById(R.id.userNameWelcomePage);
         counter = findViewById(R.id.counter);
         guessingNumber = findViewById(R.id.guessingNumber);
@@ -42,12 +71,7 @@ public class secondActivity extends AppCompatActivity {
         // Generate random integers in range 1 to 10
         rand_int = (rand.nextInt(10)) + 1;
 
-        mAuth = mAuth = FirebaseAuth.getInstance();
 
-        hello = findViewById(R.id.userNameWelcomePage);
-        hello.setText("hello, " + mAuth.getCurrentUser().getEmail());
-        FirebaseUser user = mAuth.getCurrentUser();
-        hello.setText("hello, " + user.getEmail());
 
 //        sharedPref = getSharedPreferences("BenApp", Context.MODE_PRIVATE);
 //        editor = sharedPref.edit();
