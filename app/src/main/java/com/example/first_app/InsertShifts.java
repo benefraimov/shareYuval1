@@ -3,6 +3,7 @@ package com.example.first_app;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +31,14 @@ public class InsertShifts extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_shifts);
+
+        findViewById(R.id.btnViewShift).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(InsertShifts.this,ViewShifts.class));
+            }
+        });
+
         mAuth = FirebaseAuth.getInstance();
         myRef = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getUid()).child("Shifts");
 
@@ -37,11 +46,12 @@ public class InsertShifts extends AppCompatActivity {
         endTime = findViewById(R.id.endTime);
         addShift = findViewById(R.id.addShift);
 
-        shift = "start: " + startTime.getText().toString() + "end: " + endTime.getText().toString();
+
 
         addShift.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                shift = "start: " + startTime.getText().toString() + " end: " + endTime.getText().toString() + "  ";
                 ValueEventListener valueEventListener = new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
