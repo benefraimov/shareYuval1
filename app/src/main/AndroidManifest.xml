@@ -9,15 +9,16 @@
         android:roundIcon="@mipmap/ic_mercedes_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewShifts"></activity>
-        <activity android:name=".InsertShifts" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".MainActivity_Fragmants">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ViewShifts" />
+        <activity android:name=".InsertShifts" />
+        <activity android:name=".SplashScreen"/>
         <activity android:name=".thirdActivity" />
         <activity android:name=".secondActivity" />
         <activity android:name=".MainActivity" />
