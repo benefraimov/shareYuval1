@@ -2,4 +2,12 @@
     <string name="app_name">first-app</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="person" />
+    <string name="settings" />
+    <string name="other" />
+    <string name="Settings">Settings</string>
+    <string name="others">others</string>
+    <string name="Person">Person</string>
+    <string name="jhon_dohi">Jhon Dohi</string>
+    <string name="verified">verified</string>
 </resources>
