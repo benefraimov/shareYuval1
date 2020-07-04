@@ -10,4 +10,6 @@
     <string name="Person">Person</string>
     <string name="jhon_dohi">Jhon Dohi</string>
     <string name="verified">verified</string>
+    <string name="setting">setting</string>
+    <string name="profile">profile</string>
 </resources>
